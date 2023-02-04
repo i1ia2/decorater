@@ -4,68 +4,68 @@ import bs4
 import requests
 import fake_headers
 
-#1
-# def decorator_one(decorator):
-#     @wraps(decorator)
-#     def new_function(*args, **kwargs):
-#         result = decorator(*args, **kwargs)
-#         time_date = datetime.now()
-#         print(f"Функция  выполнена {decorator.__name__}, результат = {result}")
-#         end = (f"Конец функции {decorator.__name__},{time_date}, аргументы {args} и {kwargs} получается {result} \n")
-#         with open("decorater.txt", "a", encoding='utf-8') as file:
-#             file.write(end)
-#         return decorator(*args, **kwargs)
-#
-#     return new_function
-#if __name__ == '__main__':
-    # answer = int(input("выберите 1 или 2 (1-Сложение, 2-Вычитание): "))
-    # if answer == 1:
-    #     @decorator_one
-    #     def addition(a, b):
-    #         return a + b
-    #     addition(1, 2)
-    # if answer == 2:
-    #     @decorator_one
-    #     def subtraction(a, b):
-    #         return a - b
-    #     subtraction(2, 1)
+# 1
+def decorator_one(decorator):
+    @wraps(decorator)
+    def new_function(*args, **kwargs):
+        result = decorator(*args, **kwargs)
+        time_date = datetime.now()
+        print(f"Функция  выполнена {decorator.__name__}, результат = {result}")
+        end = (f"Конец функции {decorator.__name__},{time_date}, аргументы {args} и {kwargs} получается {result} \n")
+        with open("decorater.txt", "a", encoding='utf-8') as file:
+            file.write(end)
+        return decorator(*args, **kwargs)
+
+    return new_function
+if __name__ == '__main__':
+    answer = int(input("выберите 1 или 2 (1-Сложение, 2-Вычитание): "))
+    if answer == 1:
+        @decorator_one
+        def addition(a, b):
+            return a + b
+        addition(1, 2)
+    if answer == 2:
+        @decorator_one
+        def subtraction(a, b):
+            return a - b
+        subtraction(2, 1)
 
 
 
-#2
-# def logger_path(path):
-#     def decorator_one(decorator):
-#         @wraps(decorator)
-#         def new_function(*args, **kwargs):
-#             result = decorator(*args, **kwargs)
-#             time_date = datetime.now()
-#             way = path
-#             print(f"Функция  выполнена {decorator.__name__}, результат = {result}")
-#             end = (f"Конец функции {decorator.__name__},{time_date}, аргументы {args} и {kwargs} получается {result} \n")
-#             with open(way, "a", encoding='utf-8') as file:
-#                 file.write(end)
-#
-#             return decorator(*args, **kwargs)
-#
-#         return new_function
-#     return decorator_one
-#
-#
-# if __name__ == '__main__':
-#     answer = int(input("выберите 1 или 2 (1-Сложение, 2-Вычитание): "))
-#
-#     if answer == 1:
-#         @logger_path(input('Введите путь'))
-#         def addition(a, b):
-#             return a + b
-#         addition(1, 2)
-#
-#
-#     if answer == 2:
-#         @logger_path(input('Введите путь'))
-#         def subtraction(a, b):
-#             return a - b
-#         subtraction(2, 1)
+# 2
+def logger_path(path):
+    def decorator_one(decorator):
+        @wraps(decorator)
+        def new_function(*args, **kwargs):
+            result = decorator(*args, **kwargs)
+            time_date = datetime.now()
+            way = path
+            print(f"Функция  выполнена {decorator.__name__}, результат = {result}")
+            end = (f"Конец функции {decorator.__name__},{time_date}, аргументы {args} и {kwargs} получается {result} \n")
+            with open(way, "a", encoding='utf-8') as file:
+                file.write(end)
+
+            return decorator(*args, **kwargs)
+
+        return new_function
+    return decorator_one
+
+
+if __name__ == '__main__':
+    answer = int(input("выберите 1 или 2 (1-Сложение, 2-Вычитание): "))
+
+    if answer == 1:
+        @logger_path(input('Введите путь'))
+        def addition(a, b):
+            return a + b
+        addition(1, 2)
+
+
+    if answer == 2:
+        @logger_path(input('Введите путь'))
+        def subtraction(a, b):
+            return a - b
+        subtraction(2, 1)
 
 
 #3
